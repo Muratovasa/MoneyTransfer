@@ -1,36 +1,42 @@
 package com.example.moneytransfer.controller;
 
 import com.example.moneytransfer.model.Cards;
-import com.example.moneytransfer.model.Operation;
+import com.example.moneytransfer.model.ConfirmOperation;
 import com.example.moneytransfer.service.TransferService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
-
+/**
+ * Класс контроллер с 2 операциями <b>transferMoney</b> <b>confirmOperation</b>
+ *
+ * @author svetlanamuratova
+ * @version 1.1
+ */
 @RestController
 @AllArgsConstructor
 @RequestMapping("/bank")
 public class CardController {
+    /**
+     * создаем объект класса <b>transferService</b>
+     */
     private final TransferService transferService;
 
-    @GetMapping("/{accountId}")
-    public BigDecimal getBalance(@PathVariable Long accountId){
-        return transferService.getBalance(accountId);
-    }
-
-    @PostMapping("/add")
-    public BigDecimal addMoney(@RequestBody Cards cards){
-        return transferService.addMoney(cards.getNumberCardTransfer(), cards.getAmount());
-    }
-
+    /**
+     * метод перевода денег
+     *
+     * @param cards - карта
+     */
     @PostMapping("/transfer")
     public void transferMoney(@RequestBody Cards cards) {
-        transferService.makeTransfer(cards);
     }
+
+    /**
+     * метод определения статуса проведения операции
+     *
+     * @param confirmOperation - статус
+     */
     @PostMapping("/confirm")
-    public void confirm(@RequestBody Operation operation) {
-        transferService.confirmOperation(operation);
+    public void confirmOperation(@RequestBody ConfirmOperation confirmOperation) {
     }
 
 }

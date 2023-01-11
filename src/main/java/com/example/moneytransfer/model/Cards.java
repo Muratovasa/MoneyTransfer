@@ -2,31 +2,43 @@ package com.example.moneytransfer.model;
 
 import jakarta.validation.constraints.*;
 import lombok.Data;
-import lombok.NonNull;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-
+/**
+ * Класс для обозначения данных карт перевода
+ *
+ * @author svetlanamuratova
+ * @version 1.1
+ */
 @Data
 @Component
-public class Cards{
-    private Date date;
+public class Cards {
+    /**
+     * поле карты с которой выполняется перевод
+     */
     @NotNull(message = "Введите номер карты")
     @Size(min = 16, max = 16, message = "Номер карты состоит из 16 цифр")
-    private int numberMyCard;
+    private String cardFromNumber;
+    /**
+     * поле карты на которую выполняется перевод
+     */
     @Size(min = 16, max = 16, message = "Номер карты состоит из 16 цифр")
     @NotNull(message = "Введите номер карты")
-    private int numberCardTransfer;
+    private String cardToNumber;
     @Size(min = 4, max = 4, message = "ввести формат mm/dd из 4-х цифр")
+    /** поле корректного срока действия карты с которой выполняется перевод*/
     @FutureOrPresent
     @NotNull(message = "Введите срок действия карты")
-    private Date dateCard;
+    private String cardFromValidTill;
+    /**
+     * поле код CVV карты с которой выполняется перевод
+     */
     @Size(min = 3, max = 3, message = "код состоит из 3-х цифр")
-    @NotNull(message = "Введите код CSV ")
-    private int csv;
+    @NotNull(message = "Введите код CVV ")
+    private String cardFromCVV;
+    /**
+     * поле суммы перевода
+     */
     @NotBlank
-    private BigDecimal amount;
-    List<String> logs;
+    private Object amount;
 }

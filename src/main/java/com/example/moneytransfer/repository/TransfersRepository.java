@@ -1,26 +1,23 @@
 package com.example.moneytransfer.repository;
 
-import com.example.moneytransfer.model.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
-
-import java.math.BigDecimal;
-import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 @Slf4j
 public class TransfersRepository {
+    /** на данном этапе данный класс будет пустой и не использоваться*/
 
-    private final ConcurrentHashMap<Integer, BigDecimal> listOTransfers = new ConcurrentHashMap<>();
+    /*private final ConcurrentHashMap<String, Object> listOTransfers = new ConcurrentHashMap<>();
 
-    public BigDecimal getBalanceForId(Long accountId) {
-        return listOTransfers.get(accountId);
+    public BigDecimal getBalanceForId(String accountId) {
+        return (BigDecimal) listOTransfers.get(accountId);
     }
 
-    public void save (int id, BigDecimal amount){
+    public void save (String id, Object amount){
         listOTransfers.put(id, amount);
     }
 
-    public void confirmFromRepo(Operation operation) {
-    }
+    public void confirmFromRepo(ConfirmOperation confirmOperation) {
+    }*/
 }

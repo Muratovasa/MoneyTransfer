@@ -8,10 +8,10 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TransferServiceTest {
-    private TransfersRepository transfersRepository= new TransfersRepository();
+    /** на данном этапе данный класс будет пустой и не использоваться*/
+   /* private TransfersRepository transfersRepository= new TransfersRepository();
     private TransferService transferService = new TransferService(transfersRepository);
 
-/*
     @Test
     void getBalance() {
         var balance = transferService.getBalance(1L);

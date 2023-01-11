@@ -13,18 +13,12 @@ public class ExceptionHandlerAdvice {
     @ExceptionHandler(InvalidCredentials.class)
     public ResponseEntity<String> icHandler(InvalidCredentials msg){
         log.error(msg.getMessage());
-        return new ResponseEntity<>("400 InvalidCredentials in thrownException method", HttpStatus.NOT_FOUND);
-    }
-
-    @ExceptionHandler(UnauthorizedUser.class)
-    public ResponseEntity<String> uuHandler(UnauthorizedUser msg){
-        log.error(msg.getMessage());
-        return new ResponseEntity<>("401 UnauthorizedUser in thrownException method", HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>("400 Error input data", HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(InternalServer.class)
     public ResponseEntity<String> isHandler(InternalServer msg){
         log.error(msg.getMessage());
-        return new ResponseEntity<>("500 InternalServer in thrownException method", HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>("500 Error transfer", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
